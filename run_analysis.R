@@ -60,5 +60,11 @@ colMS <- c(colMS, 562, 563)
 # Remove the unwanted columns from allData
 allData <- allData[,colMS]
 
+# 3. Uses descriptive activity names to name the activities in the data set
+currentActivity = 1
+for (currentActivityLabel in activityLabels$activityType) {
+  allData$activity <- gsub(currentActivity, currentActivityLabel, allData$activity)
+  currentActivity <- currentActivity + 1
+}
 
 
