@@ -67,4 +67,26 @@ for (currentActivityLabel in activityLabels$activityType) {
   currentActivity <- currentActivity + 1
 }
 
+# 4. Appropriately labels the data set with descriptive variable names. 
+# Add the column names (features) to allData
+colnames(allData) <- c(features$V2, "Activity", "Subject")
+colnames(allData) <- tolower(colnames(allData))
+
+# 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each 
+subject.
+
+allData$activity <- as.factor(allData$activity)
+allData$subject <- as.factor(allData$subject)
+
+tidyData = aggregate(allData, by=list(activity = allData$activity, subject=allData$subject), mean)
+
+# Remove the subject and activity column, since a mean of those has no use
+tidyData[,90] = NULL
+tidyData[,89] = NULL
+setwd('M:/Courses/datasciencecoursera/GetCleanData/GetDataProject/UCI HAR Dataset');
+
+write.table(tidyData, "tidyData.txt", sep="\t")
+
+
+
 
