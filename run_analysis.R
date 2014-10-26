@@ -83,7 +83,8 @@ tidyData = aggregate(allData, by=list(activity = allData$activity, subject=allDa
 # Remove the subject and activity column, since a mean of those has no use
 tidyData[,90] = NULL
 tidyData[,89] = NULL
-setwd('M:/Courses/datasciencecoursera/GetCleanData/GetDataProject/UCI HAR Dataset');
+
+#setwd('M:/Courses/datasciencecoursera/GetCleanData/GetDataProject/UCI HAR Dataset');
 
 write.table(tidyData, "tidyData.txt", sep="\t")
 
